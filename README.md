@@ -8,7 +8,7 @@ Repo del progetto finale di Python
 
 ## Descrizione del progetto
 
-Il progetto consiste nello sviluppo di un programma da riga di comando in Python che analizza un file e ne valuta il livello di rischio attraverso una serie di controlli statici. Lo scanner calcola gli hash del file (SHA256, MD5), verifica la presenza di stringhe sospette tramite espressioni regolari, analizza l'entropia del contenuto per individuare file compressi o offuscati, controlla l'estensione e altre caratteristiche del file e produce un report finale con un punteggio di rischio. Come estensione opzionale, il programma potrà interrogare servizi online come VirusTotal (o altri scanner simili) utilizzando le API pubbliche, confrontando l'hash del file con database di malware già conosciuti.
+Il progetto consiste nello sviluppo di un programma che analizza un file e ne valuta il livello di rischio attraverso una serie di controlli statici. Lo scanner calcola gli hash del file (SHA256, MD5), verifica la presenza di stringhe sospette tramite espressioni regolari, analizza l'entropia del contenuto per individuare file compressi o offuscati, controlla l'estensione e altre caratteristiche del file e produce un report finale con un punteggio di rischio. Come estensione opzionale, il programma userà servizi online come VirusTotal (o altri scanner simili) utilizzando le API pubbliche, confrontando l'hash del file con database di malware già conosciuti.
 
 ## Problema che risolve e destinatari
 
