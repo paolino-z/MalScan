@@ -1,3 +1,3 @@
-from malscan import main
+from malscan.engine import main
 if __name__ == "__main__":
     main()
