@@ -45,5 +45,5 @@ engine.add_check(HashCheck())
 engine.add_check(ExtensionCheck())
 engine.add_check(EntropyCheck())
 engine.add_check(RegexCheck())
-engine.add_check(esempio())  # <-- Ecco fatto!
+engine.add_check(esempio())
 ```
