@@ -8,4 +8,4 @@ ho aggiornato la struttura del progetto (/src/progetto) con i requisiti e i file
 abbiamo iniziato a scrivere la prima funzione (il motore), decidendo di fare una classe per file. inoltre abbiamo implementato il manuale tecnico (richiede modifiche)
 
 ### 14 luglio
-aggiunto il controllo dell'estensione
+aggiunto il controllo dell'estensione, inizio controllo regex
