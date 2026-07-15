@@ -1,8 +1,10 @@
+import re
 from malscan.engine import Check
 
 class RegexCheck(Check):
     def __init__(self):
         self.patterns = {
+            rb"EICAR-STANDARD-ANTIVIRUS-TEST-FILE": "EICAR Standard Anti-Virus Test File Signature",
             rb"powershell(\.exe)?": "PowerShell Execution Reference",
             rb"cmd\.exe": "Command Prompt Reference",
             rb"eval\(|exec\(": "Dynamic Code Execution Pattern",
@@ -13,4 +15,24 @@ class RegexCheck(Check):
         }
 
     def analyze(self, file_path: str) -> dict:
-        pass
+        matches_found = {}
+        score = 0
+        with open(file_path, "rb") as f:
+            content = f.read()
+            
+        for pattern, description in self.patterns.items():
+            matches = re.findall(pattern, content, re.IGNORECASE)
+            if matches:
+                matches_found[description] = len(matches)
+                if b"EICAR" in pattern:
+                    score += 100
+                else:
+                    score += min(20 * len(matches), 40)
+                
+        return {
+            "name": "Signature & Regex Check",
+            "score": min(score, 100 if "EICAR Standard Anti-Virus Test File Signature" in matches_found else 60),
+            "details": {
+                "matches": matches_found if matches_found else "Nessun match trovato"
+            }
+        }
