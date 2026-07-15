@@ -1,5 +1,5 @@
 import re
-from malscan.engine import Check
+from .base import Check
 
 class RegexCheck(Check):
     def __init__(self):

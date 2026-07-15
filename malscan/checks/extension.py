@@ -1,6 +1,6 @@
 import os
 
-from malscan.engine import Check
+from .base import Check
 
 class ExtensionCheck(Check):
     def __init__(self):
