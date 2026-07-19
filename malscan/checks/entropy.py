@@ -1,6 +1,6 @@
 import math
 import os
-from .base import check
+from .base import Check
 
 class EntropyCheck(Check):
     def analyze(self, file_path: str) -> dict:
