@@ -1,6 +1,6 @@
 import math
 import os
-from malscan.engine import Check
+from .base import check
 
 class EntropyCheck(Check):
     def analyze(self, file_path: str) -> dict:
