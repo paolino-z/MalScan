@@ -53,11 +53,11 @@ python -m malscan file
 Per ottenere un report JSON:
 
 ```bash
-python -m malscan file --json-out report.json
+python -m malscan --json-out report.json file
 ```
 
 VirusTotal viene usato solo se passi la chiave API:
 
 ```bash
-python -m malscan file --virustotal-api-key LA_TUA_API_KEY
+python -m malscan --virustotal-api-key LA_TUA_API_KEY file
 ```
