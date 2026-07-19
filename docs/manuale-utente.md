@@ -9,6 +9,7 @@
 ## Requisiti
 
 - Python 3.9+
+- Modulo Request per VirusTotal
 
 ---
 
@@ -17,8 +18,8 @@
 Clonare il repository:
 
 ```bash
-git clone https://github.com/<username>/malscan.git
-cd malscan
+git clone https://github.com/paolino-z/MalScan.git
+cd MalScan
 ```
 
 Installare le dipendenze:
@@ -40,19 +41,23 @@ pip install -r requirements.txt
 Analisi di un file:
 
 ```bash
-python -m malscan percorso/del/file
+python __main__.py file
 ```
 
 Oppure:
 
 ```bash
-python -m malscan sample.exe
+python -m malscan file
 ```
 
 Per ottenere un report JSON:
 
 ```bash
-python -m malscan sample.exe --json
+python -m malscan file --json-out report.json
 ```
 
----
+VirusTotal viene usato solo se passi la chiave API:
+
+```bash
+python -m malscan file --virustotal-api-key LA_TUA_API_KEY
+```
