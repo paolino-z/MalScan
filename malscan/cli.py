@@ -24,8 +24,8 @@ def print_text_report(report: dict):
                 print(f"    {k.capitalize()}:")
                 for sub_k, sub_v in v.items():
                     print(f"      - {sub_k}: {sub_v}")
-                else:
-                    print(f"    {k.capitalize()}: {v}")
+            else:
+                print(f"    {k.capitalize()}: {v}")
         print("=" * 60)
 
 def main():
