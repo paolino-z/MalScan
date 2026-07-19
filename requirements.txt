@@ -1,1 +1,1 @@
-#requests per virustotal (?)
+requests>=2.31.0
