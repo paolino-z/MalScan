@@ -12,6 +12,7 @@
 - Calcolo degli hash MD5 e SHA-256
 - Analisi dell'entropia per individuare file compressi o cifrati
 - Ricerca di pattern sospetti tramite espressioni regolari
+- Verifica opzionale tramite VirusTotal API
 - Report in formato testo o JSON
 - Architettura modulare facilmente estendibile
 
@@ -32,7 +33,8 @@ malscan/
     ├── entropy.py         # Analisi dell'entropia
     ├── extension.py       # Controllo estensioni sospette
     ├── hash.py            # Calcolo hash
-    └──regex.py           # Ricerca pattern sospetti
+    ├── virustotal.py      # Verifica opzionale tramite VirusTotal API
+    └── regex.py           # Ricerca pattern sospetti
 ```
 
 ---
@@ -42,8 +44,8 @@ malscan/
 Clonare il repository:
 
 ```bash
-git clone https://github.com/<username>/malscan.git
-cd malscan
+git clone https://github.com/paolino-z/MalScan.git
+cd MalScan
 ```
 
 Installare le dipendenze:
@@ -65,20 +67,28 @@ pip install -r requirements.txt
 Analisi di un file:
 
 ```bash
-python -m malscan percorso/del/file
+python __main__.py file
 ```
 
-Oppure:
+Oppure più semplice:
 
 ```bash
-python -m malscan sample.exe
+python -m malscan file
 ```
 
 Per ottenere un report JSON:
 
 ```bash
-python -m malscan sample.exe --json
+python -m malscan file --json-out report.json
 ```
+
+VirusTotal viene usato solo se passi la chiave API:
+
+```bash
+python -m malscan file --virustotal-api-key LA_TUA_API_KEY
+```
+
+Se non specifichi `--virustotal-api-key`, l'analisi **NON** userà VirusTotal
 
 ---
 
@@ -140,6 +150,18 @@ Ricerca firme e pattern sospetti, ad esempio:
 - `system()`
 - firma del file di test EICAR
 
+### VirusTotal API Check
+
+Effettua una verifica online opzionale del file tramite VirusTotal quando viene fornita una chiave API.
+
+Il controllo:
+
+- calcola lo SHA-256 del file
+- tenta di recuperare il report già presente su VirusTotal
+- carica il file solo se il report non è disponibile e l'utente conferma l'upload
+
+Se non specifichi `--virustotal-api-key`, il controllo viene saltato e l'analisi resta locale.
+
 ---
 
 ## Output
@@ -151,7 +173,7 @@ Esempio:
  MALSCAN REPORT
 ============================================================
 
-Punteggio di rischio: 45/100
+Punteggio di rischio: 67/100
 
 Livello di rischio: Medio
 
@@ -170,6 +192,10 @@ Livello di rischio: Medio
 [+] Regex Analysis
     PowerShell Execution Reference
     Network Activity Indicator
+
+[+] VirusTotal API Check
+    Punteggio parziale: 22
+    Status: ...
 ```
 
 ---
@@ -197,6 +223,9 @@ Questo rende semplice aggiungere nuovi moduli di analisi.
 ## Dipendenze
 
 - Python 3.9+
+- requests, usata per le chiamate a VirusTotal
+
+Se non usi VirusTotal, le analisi locali restano comunque disponibili.
 
 ---
 
