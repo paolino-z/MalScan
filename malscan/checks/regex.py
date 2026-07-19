@@ -5,8 +5,8 @@ from .base import Check
 class RegexCheck(Check):
     def __init__(self):
         self.patterns = {
-            rb"EICAR-STANDARD-ANTIVIRUS-TEST-FILE": "EICAR Standard Anti-Virus Test File Signature",
-            
+            rb"EICAR-STANDARD-ANTIVIRUS-TEST-FILE": ("EICAR Standard Anti-Virus Test File Signature", 100),
+
             #powershell
             rb"powershell(\.exe)?\s+.*-enc(odedcommand)?": ("PowerShell EncodedCommand", 25),
             rb"powershell(\.exe)?\s+.*-nop": ("PowerShell NoProfile", 20),
@@ -29,6 +29,8 @@ class RegexCheck(Check):
             # cmd
             rb"cmd\.exe\s*/c": ("Command Prompt Execution", 15)
         }
+
+        self.threshold = 40
 
     def analyze(self, file_path: str) -> dict:
         matches_found = {}
