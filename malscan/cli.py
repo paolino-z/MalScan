@@ -6,6 +6,7 @@ from .checks.extension import ExtensionCheck
 from .checks.regex import RegexCheck
 from .checks.entropy import EntropyCheck
 from .checks.hash import HashCheck
+from .checks.virustotal import VirusTotalCheck
 
 def print_text_report(report: dict):
     print("=" * 60)
@@ -31,7 +32,7 @@ def main():
     parser = argparse.ArgumentParser(description="MalScan - Analizzatore di file")
     parser.add_argument("file", help="Percorso del file da analizzare")
     parser.add_argument("--json-out", help="Percorso file di output JSON opzionale", default=None)
-    
+    parser.add_argument("--virustotal-api-key", help="API key di VirusTotal", default=None)
     args = parser.parse_args()
 
     engine = MalScanEngine()
@@ -39,7 +40,7 @@ def main():
     engine.add_check(ExtensionCheck())
     engine.add_check(EntropyCheck())
     engine.add_check(RegexCheck())
-    #engine.add_check(VirusTotalCheck(api_key=""))
+    engine.add_check(VirusTotalCheck(api_key=args.virustotal_api_key, enabled=bool(args.virustotal_api_key)))
 
     try:
         report = engine.run(args.file)
