@@ -14,3 +14,10 @@ Mi ha suggerito le modifiche e mi ha spiegato 'nel refactor ha messo il punto da
 ### Shannon
 *cosa ho chiesto:* Ho chiesto spiegazioni teoriche su come funziona l'entropia di Shannon applicata ai file e come poter calcolare questo valore matematico all'interno di una classe Python (EntropyCheck) per individuare file potenzialmente compressi o offuscati.
 *cosa mi ha risposto:* L'IA mi ha spiegato la formula matematica dell'entropia (basata sulla frequenza dei singoli byte) e come questa si traduca in un valore da 0 a 8. Mi ha fornito la struttura logica per calcolare le probabilità dei byte e applicare il logaritmo in base 2 tramite il modulo math. Ho analizzato la spiegazione e ho implementato la logica all'interno del progetto, impostando una soglia di rischio sopra il valore di 7.2.
+
+### VirusTotal
+per virustotal ho chiesto:
+* come potrei gestire gli errori (ad esepio se si mette il campo '--virustotal-api-key' ma si usava una api key sbagliata) e ho deciso di mettere un controllo che valida solo il response code 200 OK, il resto farà mostrare l'error code 401 o 403
+* quale url serve per il caricamento dei file
+* richiesta di upload se non veniva trovato nei suoi database
+* come potevo fare se non si aveva internet
