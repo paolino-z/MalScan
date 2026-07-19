@@ -150,6 +150,8 @@ Ricerca firme e pattern sospetti, ad esempio:
 - `system()`
 - firma del file di test EICAR
 
+---
+
 ### VirusTotal API Check
 
 Effettua una verifica online opzionale del file tramite VirusTotal quando viene fornita una chiave API.
