@@ -1,0 +1,4 @@
+Questo e' un semplice file di testo usato per un test.
+Contiene solo frasi normali, senza alcun contenuto sospetto.
+Serve a verificare che l'analizzatore non generi falsi positivi
+su documenti comuni come appunti, note o relazioni.
